@@ -2370,7 +2370,8 @@ body {
   display: inline-block;
   background-image: url("/images/logo.png");
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  cursor: pointer; }
 
 .btn-nav {
   display: inline-block;
@@ -2452,7 +2453,11 @@ a.result-row:hover {
   position: relative;
   display: block;
   float: left;
-  overflow-y: auto; }
+  overflow-y: auto;
+  background-color: #e5e5e5;
+  background-image: url("/images/folder-movies.png");
+  background-position: center;
+  background-repeat: no-repeat; }
 
 #results {
   position: absolute;
@@ -2473,10 +2478,7 @@ a.result-row:hover {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #f5f5f5;
-  background-image: url("/images/folder-movies.png");
-  background-position: center;
-  background-repeat: no-repeat; }
+  background-color: #f5f5f5; }
 
 .dugme {
   width: 120px;

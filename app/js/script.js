@@ -1,37 +1,47 @@
 $(document).ready(function () {
-            var settings = {
-                "async": true,
-                "crossDomain": true,
+
+//reload page
+$('#logo').on('click', function(){
+  location.reload();
+});
+
+var settings = {
+    "async": true,
+    "crossDomain": true,
 //serch param              "url": "https://api.themoviedb.org/3/search/movie?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US&page=1&include_adult=false",
-                "url": "https://api.themoviedb.org/3/movie/popular?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US&page=1",
-                "method": "GET",
-                "headers": {},
-                "data": "{}"
-            }
+    "url": "https://api.themoviedb.org/3/movie/popular?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US&page=1",
+    "method": "GET",
+    "headers": {},
+    "data": "{}"
+}
 
-            $.ajax(settings).done(function (response) {
+$.ajax(settings).done(function (response) {
 
-              $('#movies').on('click',function(e) {
-                  e.stopPropagation();
-                  $('#movies').addClass('active');
-                  for(var i = 0, l = response.results.length/2; i < l; i++) {
+  $('#movies').on('click',function(a) {
 
-                    var resultShow = '<ul>';
-                    resultShow += '<li><a id="resultLink" href="https://api.themoviedb.org/3/movie/' + response.results[i].id + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" class="result-row"><img src="https://image.tmdb.org/t/p/w500' + response.results[i].poster_path + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" height="120px" /> ' + response.results[i].title + '</a></li>';
-                    resultShow += '</ul>';
-                    $('#results').append(resultShow);
+      a.stopPropagation();
+
+        $('#movies').toggleClass('active');
+
+        for(var i = 0, l = response.results.length/2; i < l; i++) {
+          var resultShow = '<ul>';
+          resultShow += '<li><a id="resultLink" href="https://api.themoviedb.org/3/movie/' + response.results[i].id + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" class="result-row"><img src="https://image.tmdb.org/t/p/w500' + response.results[i].poster_path + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" height="120px" /> ' + response.results[i].title + '</a></li>';
+          resultShow += '</ul>';
+          $('#results').append(resultShow);
 
 //document.querySelectorAll("#resultLink").length
-                  //$("#results").append('<a id="resultLink" href="https://api.themoviedb.org/3/movie/' + response.results[i].id + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" class="result-row">' + response.results[i].title + '</a>');
-                  }
-              });
-              $('#resultLink').on('click', function(){
-                var movieContainer = '<ul>';
-                movieContainer += '<li>' + response.results[i].title + '</li>';
-                movieContainer += '</ul>';
-                $('#movieDetalsContainer').append(movieContainer);
+      //$("#results").append('<a id="resultLink" href="https://api.themoviedb.org/3/movie/' + response.results[i].id + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" class="result-row">' + response.results[i].title + '</a>');
+      }
 
-              });
+});
+
+$('#resultLink').on('click', function(){
+  var movieContainer = '<ul>';
+  movieContainer += '<li>' + response.results[i].title + '</li>';
+  movieContainer += '</ul>';
+  $('#movieDetalsContainer').append(movieContainer);
+
+});
 
 // related code for searching movies
 
@@ -50,10 +60,8 @@ $(document).ready(function () {
 
       $('#tvShows').on('click',function(e) {
           e.stopPropagation();
-          $('#tvShows').addClass('active');
+          $('#tvShows').toggleClass('active');
           for(var i = 0, l = response.results.length/2; i < l; i++) {
-            var base_url_tv = "https://api.themoviedb.org/3/tv/";
-
             var resultTvShow = '<ul>';
             resultTvShow += '<li><a id="resultLink" href="https://api.themoviedb.org/3/tv/' + response.results[i].id + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" class="result-row"><img src="https://image.tmdb.org/t/p/w500' + response.results[i].poster_path + '?api_key=9e93a8072a4001746ef7cd2093ad1e4a&language=en-US" height="120px" /> '+ response.results[i].name +'</a></li>';
             resultTvShow += '</ul>';
