@@ -129,22 +129,24 @@ a.result-row:hover {
   background-position: center;
   background-repeat: no-repeat;
 }
-#results {
+#resultsMovies,
+#resultsTvShows {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 12;
   width: 100%;
   height: 100%;
+  display: none;
 }
-#results ul {
+#resultsMovies ul,
+#resultsTvShows ul {
   margin: 0;
   padding: 0;
     li {
       list-style: none;
     }
 }
-
 
 #movieDetalsContainer {
   display: block;
